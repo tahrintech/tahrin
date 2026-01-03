@@ -1,2 +1,2 @@
-# tahrin
+# TahRin Technology
 wesite
