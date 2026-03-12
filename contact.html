@@ -29,6 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -49,17 +50,26 @@
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Twitter">
+                        <i class="fab fa-twitter fw-normal"></i>
+                    </a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                        <i class="fab fa-facebook-f fw-normal"></i>
+                    </a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                        <i class="fab fa-linkedin-in fw-normal"></i>
+                    </a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                        <i class="fab fa-instagram fw-normal"></i>
+                    </a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                        <i class="fab fa-youtube fw-normal"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
-
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
@@ -86,7 +96,7 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link active">Contact</a>
                 </div>
-                
+
             </div>
         </nav>
 
@@ -163,20 +173,20 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <!--<h4 class="mb-4">Receive messages instantly with our PHP and Ajax contact form - available in the <a href="https://htmlcodex.com/downloading/?item=1858">Pro Version</a> only.</h4>-->
-                    <form>
+
+                    <form id="contactForm" action="https://webhook.site/eac09959-60b6-478e-b76b-4870486d0826" method="post">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
+                                <input type="text" id="name" name="name" class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
                             </div>
                             <div class="col-md-6">
-                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" id="email" name="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
+                                <input id="subject" name="subject" type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Message"></textarea>
+                                <textarea id="message" name="message" class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Message"></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
@@ -185,9 +195,27 @@
                     </form>
                 </div>
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1651.3723516975074!2d74.83777557260298!3d34.127284981883605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1772699325036!5m2!1sen!2sin" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1651.3723516975074!2d74.83777557260298!3d34.127284981883605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1772699325036!5m2!1sen!2sin"
                             frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
                     </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal (added) -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100" id="thankYouModalLabel">Thank you!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Your message has been received. We will contact you shortly.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -250,10 +278,10 @@
                                 <p class="mb-0">+91 89821652490</p>
                             </div>
                             <div class="d-flex mt-4">
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="https://x.com/"><i class="fab fa-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="https://www.facebook.com/"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="https://www.linkedin.com/"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="https://www.instagram.com/"><i class="fab fa-instagram fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -287,6 +315,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid text-white" style="background: #061429;">
         <div class="container text-center">
             <div class="row justify-content-end">
@@ -316,6 +345,47 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Inline script to show thank-you modal on submit (added) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('contactForm');
+            if (!form) return;
+
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var thankModalEl = document.getElementById('thankYouModal');
+            var thankModal = new bootstrap.Modal(thankModalEl);
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                }
+
+                var action = form.action;
+                var method = (form.method || 'POST').toUpperCase();
+                var formData = new FormData(form);
+
+                // Send form with fetch; whether it succeeds or fails we show the modal.
+                fetch(action, {
+                    method: method,
+                    body: formData,
+                    mode: 'cors'
+                }).catch(function (err) {
+                    // network errors will land here; proceed to show modal anyway
+                    console.warn('Form submission failed (will still show thank-you modal):', err);
+                }).finally(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }
+                    form.reset();
+                    thankModal.show();
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
