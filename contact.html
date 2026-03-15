@@ -174,7 +174,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
 
-                    <form id="contactForm" action="https://webhook.site/eac09959-60b6-478e-b76b-4870486d0826" method="post">
+                    <form id="contactForm" action="http://localhost:61591/save.php" method="post">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <input type="text" id="name" name="name" class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
@@ -346,6 +346,32 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
+    <!--<script>
+    document.getElementById("contactForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      // Replace with your unique Webhook.site URL
+      const webhookUrl = "https://webhook.site/YOUR-UNIQUE-ID";
+
+      try {
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        document.getElementById("status").innerText = "Form submitted successfully!";
+      } catch (error) {
+        document.getElementById("status").innerText = "Error submitting form.";
+      }
+    });
+  </script>-->
+
+
+
     <!-- Inline script to show thank-you modal on submit (added) -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -366,6 +392,14 @@
                 var action = form.action;
                 var method = (form.method || 'POST').toUpperCase();
                 var formData = new FormData(form);
+
+                //fetch(formAction, options)
+                //    .then(response => {
+                //        if (!response.ok) throw new Error("Network response was not OK");
+                //        return response.json();
+                //    })
+                //    .then(data => showThankYouModal())
+                //    .catch(error => alert("Submission failed. Please try again later."));
 
                 // Send form with fetch; whether it succeeds or fails we show the modal.
                 fetch(action, {
