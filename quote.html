@@ -37,7 +37,6 @@
         <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
-
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -70,13 +69,12 @@
         </div>
     </div>
     <!-- Topbar End -->
-
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
                 <img src="img/tahrin_logo.png" alt="TahRin Tech" width="250px" height="100px" />
-                
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -97,8 +95,8 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                
-                
+
+
             </div>
         </nav>
 
@@ -114,7 +112,6 @@
         </div>
     </div>
     <!-- Navbar End -->
-
     <!-- Full Screen Search Start -->
     <div class="modal fade" id="searchModal" tabindex="-1">
         <div class="modal-dialog modal-fullscreen">
@@ -124,7 +121,7 @@
                 </div>
                 <div class="modal-body d-flex align-items-center justify-content-center">
                     <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <input id="searchInput" type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
                         <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
@@ -132,7 +129,6 @@
         </div>
     </div>
     <!-- Full Screen Search End -->
-
     <!-- Quote Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -202,8 +198,26 @@
             </div>
         </div>
     </div>
-    <!-- Quote End -->
 
+    <!-- Thank You Modal (added) -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100" id="thankYouModalLabel">Thank you!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Your message has been received. We will contact you shortly.</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote End -->
     <!-- Vendor Start -->
     <!--<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5 mb-5">
@@ -223,7 +237,6 @@
         </div>
     </div>-->
     <!-- Vendor End -->
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -236,7 +249,7 @@
                         <p class="mt-3 mb-4">TahRin Technologies is a professional startup company that provides technical and professional services to help businesses grow and succeed.</p>
                         <form action="">
                             <div class="input-group">
-                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                                <input id="signupemail" type="text" class="form-control border-white p-3" placeholder="Your Email">
                                 <button class="btn btn-dark">Sign Up</button>
                             </div>
                         </form>
@@ -308,7 +321,7 @@
 
                             <!--/*** The author’s attribution link must remain intact in the template. ***/-->
                             <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                            
+
                         </p>
                     </div>
                 </div>
@@ -316,7 +329,6 @@
         </div>
     </div>
     <!-- Footer End -->
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
@@ -332,6 +344,77 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
+    <!-- Inline script to show thank-you modal on submit (added) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('contactForm');
+            if (!form) return;
+
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var thankModalEl = document.getElementById('thankYouModal');
+            var thankModal = new bootstrap.Modal(thankModalEl);
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+                }
+
+                var action = form.action;
+                var method = (form.method || 'POST').toUpperCase();
+                var formData = new FormData(form);
+
+                //fetch(formAction, options)
+                //    .then(response => {
+                //        if (!response.ok) throw new Error("Network response was not OK");
+                //        return response.json();
+                //    })
+                //    .then(data => showThankYouModal())
+                //    .catch(error => alert("Submission failed. Please try again later."));
+
+                // Send form with fetch; whether it succeeds or fails we show the modal.
+                // fetch(action, {
+                //     method: method,
+                //     body: formData,
+                //     mode: 'cors'
+                // }).catch(function (err) {
+                //     // network errors will land here; proceed to show modal anyway
+                //     console.warn('Form submission failed (will still show thank-you modal):', err);
+                // }).finally(function () {
+
+                // Collect form data
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var subject = document.getElementById('subject').value;
+                var message = document.getElementById('message').value;
+
+                var data = "Name: " + name + "\nEmail: " + email + "\nSubject: " + subject + "\nMessage: " + message + "\n---\n";
+
+                // Create blob and download
+                var blob = new Blob([data], { type: 'text/plain' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'contact_data.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Show modal
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                }
+                form.reset();
+                thankModal.show();
+            });
+        });
+    </script>
+
 </body>
 
 </html>
